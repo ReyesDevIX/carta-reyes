@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Carta a los Reyes Magos</title>
+  <meta name="description" content="Mi lista de deseos mágica para la noche de Reyes. Toca cada regalo para desenvolverlo.">
+  
+  <!-- Google Fonts: Great Vibes, Cormorant Garamond y Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,400;1,600&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Hoja de estilos principal -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ==========================================
+       SILUETAS Y DECORACIONES LATERALES (ESCRITORIO)
+       ========================================== -->
+  <div class="side-decor side-decor--left" aria-hidden="true">
+    <div class="side-decor__camels"></div>
+  </div>
+  <div class="side-decor side-decor--right" aria-hidden="true">
+    <div class="side-decor__star-trail"></div>
+  </div>
+
+  <!-- ==========================================
+       WIDGET DE MÚSICA NAVIDEÑA FLOTANTE
+       ========================================== -->
+  <div class="audio-player-widget">
+    <audio id="bg-music" loop preload="auto">
+      <source src="https://cdn.pixabay.com/download/audio/2022/11/11/audio_2d81f21151.mp3?filename=christmas-magic-125026.mp3" type="audio/mpeg">
+      Tu navegador no soporta audio HTML5.
+    </audio>
+    <button type="button" id="toggle-music-btn" class="audio-btn" aria-label="Activar o pausar música navideña">
+      <i data-lucide="music-off" id="music-icon" class="icon-sm"></i>
+      <span class="audio-btn__text" id="music-text">Música Desactivada</span>
+    </button>
+  </div>
+
+  <!-- Lienzo de fondo para estrellas parpadeantes, nieve y estrellas fugaces -->
+  <canvas id="magic-sky" aria-hidden="true"></canvas>
+
+  <!-- ==========================================
+       1. HERO DE BIENVENIDA
+       ========================================== -->
+  <header class="hero" id="inicio">
+    <div class="hero__container">
+      <span class="hero__badge">
+        <i data-lucide="sparkles" class="icon-xs"></i>
+        <span>Noche del 5 de Enero</span>
+        <i data-lucide="sparkles" class="icon-xs"></i>
+      </span>
+      <h1 class="hero__title">Mi Carta a los Reyes Magos</h1>
+      <p class="hero__subtitle">
+        He mirado al cielo siguiendo la Estrella de Oriente para escribir mis deseos de este año.
+      </p>
+
+      <!-- Imagen principal de los Reyes Magos -->
+      <div class="hero__image-wrapper parallax-img">
+        <div class="hero__glow" aria-hidden="true"></div>
+        <img 
+          src="img/reyes-hero.jpg" 
+          alt="Sus Majestades los Reyes Magos de Oriente siguiendo la estrella" 
+          class="hero__image"
+          onerror="this.src='https://images.unsplash.com/photo-1512389142860-9c449e58a543?auto=format&fit=crop&w=900&q=80'"
+        >
+      </div>
+
+      <!-- Indicador de desplazamiento hacia la carta -->
+      <a href="#mi-carta" class="scroll-indicator" aria-label="Deslizar hacia abajo para leer la carta">
+        <span class="scroll-indicator__text">Desliza para leer la carta</span>
+        <i data-lucide="chevron-down" class="scroll-indicator__arrow"></i>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==========================================
+         2. SECCIÓN: MI CARTA (PERGAMINO 3D ENROLLABLE)
+         ========================================== -->
+    <section class="letter-section" id="mi-carta">
+      <div class="container">
+        <div class="scroll-container" role="button" tabindex="0" aria-label="Desenrollar carta a los Reyes Magos">
+          <div class="parchment-scroll">
+            
+            <!-- Cilindro superior enrollado con cuerda y sello de lacre -->
+            <div class="scroll-cylinder scroll-cylinder--top">
+              <div class="scroll-string"></div>
+              <div class="parchment-seal-badge" aria-hidden="true">
+                <i data-lucide="crown" class="icon-md"></i>
+              </div>
+            </div>
+
+            <!-- Cuerpo interior de la carta (se despliega de forma fluida) -->
+            <div class="parchment-body">
+              <div class="letter-card__header">
+                <time datetime="2026-12-25" class="letter-card__date">Navidad, camino del 6 de Enero</time>
+              </div>
+
+              <h2 class="letter-card__greeting">Queridos Melchor, Gaspar y Baltasar:</h2>
+
+              <div class="letter-card__body">
+                <p>
+                  Un año más vuelve la noche más mágica de todas. Este año he intentado portarme lo mejor posible, cuidar de los míos, perseguir mis metas con ilusión y mantener viva la chispa de cuando era pequeño.
+                </p>
+                <p>
+                  Sé que vuestros camellos vienen cargados desde muy lejos y que tenéis millones de hogares que visitar, pero si aún queda un huequito en vuestras alforjas reales, os dejo aquí abajo algunas ideas que me harían muchísima ilusión.
+                </p>
+                <p>
+                  Como siempre, dejaré galletas, leche caliente y agua fresca en el comedor para vosotros y los camellos. ¡Gracias por no fallar nunca!
+                </p>
+              </div>
+
+              <div class="letter-card__footer">
+                <div class="letter-card__photo-frame">
+                  <img 
+                    src="img/reyes-carta.jpg" 
+                    alt="Detalle de los cofres de oro de los Reyes Magos" 
+                    class="letter-card__photo"
+                    onerror="this.src='https://images.unsplash.com/photo-1543589077-47d81606c1bf?auto=format&fit=crop&w=400&q=80'"
+                  >
+                </div>
+                <div class="letter-card__signature-box">
+                  <p class="letter-card__farewell">Con todo mi cariño e ilusión,</p>
+                  <p class="letter-card__signature">Ismael Reyes</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Cilindro inferior enrollado -->
+            <div class="scroll-cylinder scroll-cylinder--bottom"></div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SEPARADOR DECORATIVO (LAS 3 CORONAS)
+         ========================================== -->
+    <div class="section-separator reveal-up" aria-hidden="true">
+      <div class="section-separator__line"></div>
+      <div class="section-separator__icons">
+        <i data-lucide="crown" class="icon-sm"></i>
+        <i data-lucide="crown" class="icon-md"></i>
+        <i data-lucide="crown" class="icon-sm"></i>
+      </div>
+      <div class="section-separator__line"></div>
+    </div>
+
+    <!-- ==========================================
+         3. SECCIÓN: MIS DESEOS (REGALOS ENVUELTOS)
+         ========================================== -->
+    <section class="wishes-section" id="mis-deseos">
+      <div class="container">
+        <div class="section-header reveal-up">
+          <span class="section-header__eyebrow">
+            <i data-lucide="sparkles" class="icon-xs"></i>
+            <span>Sorpresas bajo el árbol</span>
+            <i data-lucide="sparkles" class="icon-xs"></i>
+          </span>
+          <h2 class="section-header__title">Mis Deseos Reales</h2>
+          <button type="button" id="reset-gifts-btn" class="btn-secondary" hidden>
+            <i data-lucide="rotate-ccw" class="icon-sm"></i>
+            <span>Volver a envolver todos los regalos</span>
+          </button>
+        </div>
+
+        <!-- Grid de 6 tarjetas de deseos interactivos -->
+        <div class="gifts-grid">
+
+          <!-- REGALO 1: Mira Holográfica Eotech 551 -->
+          <article class="gift-card reveal-card" data-gift-id="regalo-1">
+            <div class="gift-wrap" role="button" tabindex="0" aria-label="Abrir Regalo número 1">
+              <div class="gift-wrap__half gift-wrap__half--left"><div class="gift-wrap__ribbon-h"></div></div>
+              <div class="gift-wrap__half gift-wrap__half--right"><div class="gift-wrap__ribbon-h"></div></div>
+              <div class="gift-wrap__ribbon-v"></div>
+              <div class="gift-wrap__seal">
+                <i data-lucide="gift" class="gift-wrap__icon"></i>
+                <span class="gift-wrap__number">Deseo #1</span>
+                <span class="gift-wrap__cta">Toca para abrir</span>
+              </div>
+            </div>
+            <div class="gift-content">
+              <div class="gift-content__img-box">
+                <span class="gift-content__tag gift-content__tag--high">
+                  <i data-lucide="star" class="icon-xs"></i>
+                  <span>¡Me hace muchísima ilusión!</span>
+                </span>
+                <img src="img/regalo-1.jpg" alt="Mira Holográfica Eotech 551 Argon Arsenic negro" class="gift-content__img" onerror="this.src='https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80'">
+              </div>
+              <div class="gift-content__info">
+                <div class="gift-content__meta">
+                  <span class="gift-content__note">Color: Negro Mate</span>
+                  <span class="gift-content__price">38,48 €</span>
+                </div>
+                <h3 class="gift-content__title">Mira Holográfica Eotech 551 Argon Arsenic negro</h3>
+                <p class="gift-content__desc">Para completar equipamiento y estrenarla en las próximas partidas.</p>
+                <a href="https://vsgun.com/producto/mira-holografica-arsenic-argon-as-551-negro" target="_blank" rel="noopener noreferrer" class="btn-gold">
+                  <span>Ver en tienda</span>
+                  <i data-lucide="arrow-up-right" class="icon-sm"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- REGALO 2: Camiseta C.D. Eldense 26/27 -->
+          <article class="gift-card reveal-card" data-gift-id="regalo-2">
+            <div class="gift-wrap" role="button" tabindex="0" aria-label="Abrir Regalo número 2">
+              <div class="gift-wrap__half gift-wrap__half--left"><div class="gift-wrap__ribbon-h"></div></div>
+              <div class="gift-wrap__half gift-wrap__half--right"><div class="gift-wrap__ribbon-h"></div></div>
+              <div class="gift-wrap__ribbon-v"></div>
+              <div class="gift-wrap__seal">
+                <i data-lucide="gift" class="gift-wrap__icon"></i>
+                <span class="gift-wrap__number">Deseo #2</span>
+                <span class="gift-wrap__cta">Toca para abrir</span>
+              </div>
+            </div>
+            <div class="gift-content">
+              <div class="gift-content__img-box">
+                <span class="gift-content__tag gift-content__tag--high">
+                  <i data-lucide="star" class="icon-xs"></i>
+                  <span>¡Me hace mucha mucha ilusión!</span>
+                </span>
+                <img src="img/regalo-2.jpeg" alt="Camiseta C.D. Eldense 26/27" class="gift-content__img" onerror="this.src='https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=600&q=80'">
+              </div>
+              <div class="gift-content__info">
+                <div class="gift-content__meta">
+                  <span class="gift-content__note">Adquisición: Tienda Física</span>
+                  <span class="gift-content__price">69,90 €</span>
+                </div>
+                <h3 class="gift-content__title">Camiseta C.D. Eldense 26/27</h3>
+                <p class="gift-content__desc">Para animar al equipo con los colores de nuestra tierra.</p>
+                <div class="btn-gold" style="justify-content: center; cursor: default; background: linear-gradient(135deg, #b8972e 0%, #d4af37 100%);">
+                  <span>En Tienda Física</span>
+                  <i data-lucide="store" class="icon-sm"></i>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- REGALO 3: Tarjeta Regalo Inditex -->
+          <article class="gift-card reveal-card" data-gift-id="regalo-3">
+            <div class="gift-wrap" role="button" tabindex="0" aria-label="Abrir Regalo número 3">
+              <div class="gift-wrap__half gift-wrap__half--left"><div class="gift-wrap__ribbon-h"></div></div>
+              <div class="gift-wrap__half gift-wrap__half--right"><div class="gift-wrap__ribbon-h"></div></div>
+              <div class="gift-wrap__ribbon-v"></div>
+              <div class="gift-wrap__seal">
+                <i data-lucide="gift" class="gift-wrap__icon"></i>
+                <span class="gift-wrap__number">Deseo #3</span>
+                <span class="gift-wrap__cta">Toca para abrir</span>
+              </div>
+            </div>
+            <div class="gift-content">
+              <div class="gift-content__img-box">
+                <span class="gift-content__tag">
+                  <i data-lucide="tag" class="icon-xs"></i>
+                  <span>Útil y necesario</span>
+                </span>
+                <img src="img/regalo-3.avif" alt="Tarjeta Regalo Inditex" class="gift-content__img" onerror="this.src='https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=600&q=80'">
+              </div>
+              <div class="gift-content__info">
+                <div class="gift-content__meta">
+                  <span class="gift-content__note">Físico u Online</span>
+                  <span class="gift-content__price">A elegir €</span>
+                </div>
+                <h3 class="gift-content__title">Tarjeta Regalo Inditex</h3>
+                <p class="gift-content__desc">Válida para Zara, Pull&Bear, Massimo Dutti, Bershka, Stradivarius, Oysho y Lefties.</p>
+                <a href="https://www.zara.com/es/es/tarjeta-regalo-pT9057969516.html?v1=547335495&v2=2543429" target="_blank" rel="noopener noreferrer" class="btn-gold">
+                  <span>Ver en tienda</span>
+                  <i data-lucide="arrow-up-right" class="icon-sm"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          
+          <!-- REGALO 4
+          <article class="gift-card reveal-card" data-gift-id="regalo-4">
+            <div class="gift-wrap" role="button" tabindex="0" aria-label="Abrir Regalo número 4">
+              <div class="gift-wrap__half gift-wrap__half--left"><div class="gift-wrap__ribbon-h"></div></div>
+              <div class="gift-wrap__half gift-wrap__half--right"><div class="gift-wrap__ribbon-h"></div></div>
+              <div class="gift-wrap__ribbon-v"></div>
+              <div class="gift-wrap__seal">
+                <i data-lucide="gift" class="gift-wrap__icon"></i>
+                <span class="gift-wrap__number">Deseo #4</span>
+                <span class="gift-wrap__cta">Toca para abrir</span>
+              </div>
+            </div>
+            <div class="gift-content">
+              <div class="gift-content__img-box">
+                <span class="gift-content__tag">
+                  <i data-lucide="book-open" class="icon-xs"></i>
+                  <span>Edición Tapa Dura</span>
+                </span>
+                <img src="img/regalo-4.jpg" alt="Libro Edición Ilustrada" class="gift-content__img" onerror="this.src='https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&w=600&q=80'">
+              </div>
+              <div class="gift-content__info">
+                <div class="gift-content__meta">
+                  <span class="gift-content__note">Detalle bonito y económico</span>
+                  <span class="gift-content__price">24,90 €</span>
+                </div>
+                <h3 class="gift-content__title">Libro Edición Ilustrada</h3>
+                <p class="gift-content__desc">Para disfrutar leyendo en el sofá con una manta y un café caliente.</p>
+                <a href="https://www.casadellibro.com" target="_blank" rel="noopener noreferrer" class="btn-gold">
+                  <span>Ver en tienda</span>
+                  <i data-lucide="arrow-up-right" class="icon-sm"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          REGALO 5
+          <article class="gift-card reveal-card" data-gift-id="regalo-5">
+            <div class="gift-wrap" role="button" tabindex="0" aria-label="Abrir Regalo número 5">
+              <div class="gift-wrap__half gift-wrap__half--left"><div class="gift-wrap__ribbon-h"></div></div>
+              <div class="gift-wrap__half gift-wrap__half--right"><div class="gift-wrap__ribbon-h"></div></div>
+              <div class="gift-wrap__ribbon-v"></div>
+              <div class="gift-wrap__seal">
+                <i data-lucide="gift" class="gift-wrap__icon"></i>
+                <span class="gift-wrap__number">Deseo #5</span>
+                <span class="gift-wrap__cta">Toca para abrir</span>
+              </div>
+            </div>
+            <div class="gift-content">
+              <div class="gift-content__img-box">
+                <span class="gift-content__tag">
+                  <i data-lucide="sparkles" class="icon-xs"></i>
+                  <span>Tamaño: 100 ml (Eau de Parfum)</span>
+                </span>
+                <img src="img/regalo-5.jpg" alt="Perfume Notas Amaderadas" class="gift-content__img" onerror="this.src='https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=600&q=80'">
+              </div>
+              <div class="gift-content__info">
+                <div class="gift-content__meta">
+                  <span class="gift-content__note">Ilusión: ¡Mucha!</span>
+                  <span class="gift-content__price">78,00 €</span>
+                </div>
+                <h3 class="gift-content__title">Perfume Notas Amaderadas</h3>
+                <p class="gift-content__desc">Un aroma especial como el incienso y la mirra para ocasiones importantes.</p>
+                <a href="https://www.primor.eu" target="_blank" rel="noopener noreferrer" class="btn-gold">
+                  <span>Ver en tienda</span>
+                  <i data-lucide="arrow-up-right" class="icon-sm"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+           REGALO 6
+          <article class="gift-card reveal-card" data-gift-id="regalo-6">
+            <div class="gift-wrap" role="button" tabindex="0" aria-label="Abrir Regalo número 6">
+              <div class="gift-wrap__half gift-wrap__half--left"><div class="gift-wrap__ribbon-h"></div></div>
+              <div class="gift-wrap__half gift-wrap__half--right"><div class="gift-wrap__ribbon-h"></div></div>
+              <div class="gift-wrap__ribbon-v"></div>
+              <div class="gift-wrap__seal">
+                <i data-lucide="gift" class="gift-wrap__icon"></i>
+                <span class="gift-wrap__number">Deseo #6</span>
+                <span class="gift-wrap__cta">Toca para abrir</span>
+              </div>
+            </div>
+            <div class="gift-content">
+              <div class="gift-content__img-box">
+                <span class="gift-content__tag">
+                  <i data-lucide="coffee" class="icon-xs"></i>
+                  <span>Color: Acero / Crema</span>
+                </span>
+                <img src="img/regalo-6.jpg" alt="Pack Cafetera & Termo" class="gift-content__img" onerror="this.src='https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80'">
+              </div>
+              <div class="gift-content__info">
+                <div class="gift-content__meta">
+                  <span class="gift-content__note">Para las mañanas de invierno</span>
+                  <span class="gift-content__price">34,50 €</span>
+                </div>
+                <h3 class="gift-content__title">Pack Cafetera & Termo</h3>
+                <p class="gift-content__desc">Para preparar el mejor café cada mañana y llevarlo siempre caliente.</p>
+                <a href="https://www.elcorteingles.es" target="_blank" rel="noopener noreferrer" class="btn-gold">
+                  <span>Ver en tienda</span>
+                  <i data-lucide="arrow-up-right" class="icon-sm"></i>
+                </a>
+              </div>
+            </div>
+          </article> -->
+          
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================
+       4. SECCIÓN DE CIERRE Y DESPEDIDA
+       ========================================== -->
+  <footer class="closing-section" id="despedida">
+    <div class="container">
+      <div class="closing-card reveal-up">
+        <div class="closing-card__img-wrapper">
+          <img 
+            src="img/reyes-cierre.jpg" 
+            alt="Silueta de los tres Reyes Magos bajo la noche estrellada" 
+            class="closing-card__img"
+            onerror="this.src='https://images.unsplash.com/photo-1482517967863-00e15c9b44be?auto=format&fit=crop&w=800&q=80'"
+          >
+        </div>
+
+        <h2 class="closing-card__title">¡Feliz Noche de Reyes!</h2>
+        <p class="closing-card__text">
+          Pero por encima de cualquier regalo envuelto, mi mayor deseo este año es compartir tiempo, risas y salud con todos vosotros. ¡Que la magia de Melchor, Gaspar y Baltasar ilumine vuestra casa!
+        </p>
+
+        <!-- Botón interactivo de cierre -->
+        <button type="button" id="magic-wish-btn" class="btn-magic">
+          <i data-lucide="wand-sparkles" class="icon-sm"></i>
+          <span>Lanzar estrella fugaz a Oriente</span>
+        </button>
+
+        <!-- Mensaje secreto que aparece al pulsar -->
+        <p id="wish-confirmation" class="closing-card__secret" aria-live="polite">
+          <i data-lucide="sparkles" class="icon-xs"></i>
+          <span>¡Tu deseo ha cruzado el cielo rumbo a Oriente! Nos vemos el 6 de enero.</span>
+        </p>
+      </div>
+
+      <p class="footer-credits">
+        <span>Diseñado con ilusión para Sus Majestades de Oriente · </span>
+        <a href="#inicio" class="footer-credits__link">
+          <span>Volver arriba</span>
+          <i data-lucide="arrow-up" class="icon-xs"></i>
+        </a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- LIBRERÍAS EXTERNAS Y SCRIPT PRINCIPAL -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="script.js"></script>
+</body>
+</html>
