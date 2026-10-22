@@ -20,7 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initGiftUnwrapping();
   initClosingWish();
   initScrollContainerToggle();
-  initMusicPlayer();
 });
 
 /* ==========================================================================
@@ -477,63 +476,6 @@ function initScrollContainerToggle() {
   if (scrollContainer && parchmentCard) {
     scrollContainer.addEventListener('click', () => {
       parchmentCard.classList.toggle('is-unrolled');
-    });
-  }
-}
-
-/* ==========================================================================
-   7. CONTROL DE MÚSICA NAVIDEÑA (ROBUSTO Y CON AVISO)
-   ========================================================================== */
-function initMusicPlayer() {
-  const audio = document.getElementById('bg-music');
-  const musicBtn = document.getElementById('toggle-music-btn');
-  const musicText = document.getElementById('music-text');
-  const musicIcon = document.getElementById('music-icon');
-
-  if (audio && musicBtn) {
-    audio.volume = 0.4;
-
-    audio.addEventListener('error', () => {
-      console.warn("No se pudo cargar el archivo de audio.");
-      musicBtn.classList.add('is-disabled');
-      if (musicText) musicText.textContent = 'Audio no disponible';
-      if (musicIcon) {
-        musicIcon.setAttribute('data-lucide', 'alert-circle');
-        if (typeof lucide !== 'undefined') lucide.createIcons();
-      }
-    });
-
-    musicBtn.addEventListener('click', () => {
-      if (audio.error) {
-        if (musicText) musicText.textContent = 'Audio no disponible';
-        return;
-      }
-
-      if (audio.paused) {
-        audio.play().then(() => {
-          musicBtn.classList.add('is-playing');
-          if (musicText) musicText.textContent = 'Música Activa';
-          if (musicIcon) {
-            musicIcon.setAttribute('data-lucide', 'music');
-            if (typeof lucide !== 'undefined') lucide.createIcons();
-          }
-        }).catch(err => {
-          console.warn("Reproducción bloqueada por el navegador:", err);
-          musicBtn.classList.remove('is-playing');
-          if (musicText) musicText.textContent = 'Navegador bloqueó audio';
-          setTimeout(() => {
-            if (musicText && audio.paused) musicText.textContent = 'Música Desactivada';
-          }, 3000);
-        });
-      } else {
-        audio.pause();
-        musicBtn.classList.remove('is-playing');
-        if (musicText) musicText.textContent = 'Música Desactivada';
-        if (musicIcon) {
-          musicIcon.setAttribute('data-lucide', 'music-off');
-          if (typeof lucide !== 'undefined') lucide.createIcons();
-        }
-      }
     });
   }
 }
